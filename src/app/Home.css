@@ -1,0 +1,12 @@
+a:hover {
+    color: #00c0b4;
+    background-color: #323233 !important;
+}
+
+a:hover > li {
+    background-color: #323233;
+}
+
+a:hover > li > div > div > svg {
+    fill: #00c0b4;
+}
