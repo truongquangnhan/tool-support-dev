@@ -32,6 +32,8 @@ import {WebPage} from "./page/WebPage";
 import {ApiPage} from "./page/ApiPage";
 import {ConfigPage} from "./page/ConfigPage";
 import Alerts from "./common/AlertCM";
+import {FormControl, MenuItem, Select} from "@mui/material";
+import Grid from "@mui/material/Unstable_Grid2";
 const drawerWidth = 240;
 const customTheme = {
   backgroundColor: '#181818',
@@ -178,7 +180,16 @@ export default function MiniDrawer() {
   };
 
   return (
-    <Box sx={{display: 'flex', flexDirection: 'column'}}>
+    <Grid
+      spacing={0}
+      columnSpacing={0}
+      rowSpacing={0}
+      container
+      direction="row"
+      justifyContent="space-between"
+      alignItems="flex-start"
+    >
+    <Grid sm={12}>
       <CssBaseline/>
       <AppBar position="fixed" open={open}>
         <Toolbar sx={{backgroundColor: 'black'}}>
@@ -199,42 +210,49 @@ export default function MiniDrawer() {
           </Typography>
         </Toolbar>
       </AppBar>
-      <Drawer variant="permanent" open={open}>
-        <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronRightIcon/> : <ChevronLeftIcon/>}
-          </IconButton>
-          <Alerts></Alerts>
-        </DrawerHeader>
-        <Divider/>
-        <List>
-          {[RouterName.HOME_PAGE, RouterName.SUPPORT_WEB, RouterName.SUPPORT_API, RouterName.CONFIG].map((text, index) => (
-            renderRouter(text, open)
-          ))}
-        </List>
-        <Divider/>
-        <List>
-          {[RouterName.SETTING].map((text, index) => (
-            renderRouter(text, open)
-          ))}
-        </List>
-      </Drawer>
-      <Box component="main" sx={{flexGrow: 1, p: 3}}>
-        <DrawerHeader/>
-        <div className={"App-body"}>
-          {/* SETTING ROUTER*/}
-          <Routes>
-            <Route path="/" element={<HomePage curentCaseNum={1} prefixCase={'No '} />}/>
-            <Route path="/web" element={<WebPage/>}/>
-            <Route path="/api" element={<ApiPage/>}/>
-            <Route path="/config" element={<ConfigPage/>}/>
-            <Route path="/setting" element={<SettingPage/>}/>
-          </Routes>
-        </div>
-      </Box>
-      <Box component="footer" sx={{backgroundColor: '#181818', color: 'white', height: 50}}>
-        <div><h5>Footer</h5></div>
-      </Box>
-    </Box>
+    </Grid>
+      <Grid sm={1}>
+        <Drawer variant="permanent" open={open}>
+          <DrawerHeader>
+            <IconButton onClick={handleDrawerClose}>
+              {theme.direction === 'rtl' ? <ChevronRightIcon/> : <ChevronLeftIcon/>}
+            </IconButton>
+            <Alerts></Alerts>
+          </DrawerHeader>
+          <Divider/>
+          <List>
+            {[RouterName.HOME_PAGE, RouterName.SUPPORT_WEB, RouterName.SUPPORT_API, RouterName.CONFIG].map((text, index) => (
+              renderRouter(text, open)
+            ))}
+          </List>
+          <Divider/>
+          <List>
+            {[RouterName.SETTING].map((text, index) => (
+              renderRouter(text, open)
+            ))}
+          </List>
+        </Drawer>
+      </Grid>
+      <Grid sm={11}>
+        <Box component="main" sx={{flexGrow: 1, p: 3}}>
+          <DrawerHeader/>
+          <div className={"App-body"}>
+            {/* SETTING ROUTER*/}
+            <Routes>
+              <Route path="/" element={<HomePage curentCaseNum={1} prefixCase={'No '} />}/>
+              <Route path="/web" element={<WebPage/>}/>
+              <Route path="/api" element={<ApiPage/>}/>
+              <Route path="/config" element={<ConfigPage/>}/>
+              <Route path="/setting" element={<SettingPage/>}/>
+            </Routes>
+          </div>
+        </Box>
+      </Grid>
+      <Grid sm={12}>
+        <Box component="footer" sx={{backgroundColor: '#181818', color: 'white', height: 50}}>
+          <div><h5>Footer</h5></div>
+        </Box>
+      </Grid>
+    </Grid>
   );
 }

@@ -1,7 +1,10 @@
 # Getting Started with DEV-TOOL
 
 This project was bootstrapped with [DEV-TOOL](https://github.com/facebook/create-react-app).
-
+## Envirionment
+* NODE VERSION:  V16.13.1
+* NPM VERSION:   9.1.3
+* REACT VERSION: 18.2.9
 ## Available Scripts
 
 In the project directory, you can run:
